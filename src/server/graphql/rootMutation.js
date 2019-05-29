@@ -82,6 +82,7 @@ import createJiraIssue from 'server/graphql/mutations/createJiraIssue'
 import reflectTemplatePromptUpdateDescription from 'server/graphql/mutations/reflectTemplatePromptUpdateDescription'
 import addGitHubAuth from 'server/graphql/mutations/addGitHubAuth'
 import removeGitHubAuth from 'server/graphql/mutations/removeGitHubAuth'
+import addOffice from 'server/graphql/mutations/addOffice'
 
 export default new GraphQLObjectType({
   name: 'Mutation',
@@ -168,6 +169,7 @@ export default new GraphQLObjectType({
     removeReflectTemplate,
     removeReflectTemplatePrompt,
     renameReflectTemplate,
-    renameReflectTemplatePrompt
+    renameReflectTemplatePrompt,
+    addOffice
   })
 })

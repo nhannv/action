@@ -15,6 +15,9 @@ const TeamRoot = lazy(() =>
 const NewTeam = lazy(() =>
   import(/* webpackChunkName: 'NewTeamRoot' */ 'universal/modules/newTeam/containers/NewTeamForm/NewTeamRoot')
 )
+const HrDashboard = lazy(() =>
+  import(/* webpackChunkName: 'HrDashboard' */ 'universal/modules/hr/components/HrDashboard/HrDashboard')
+)
 
 interface Props {
   viewer: Dashboard_viewer | null
@@ -43,6 +46,10 @@ const Dashboard = (props: Props) => {
             path='/me'
             render={(p) => (
               <UserDashboard {...p} notifications={viewer ? viewer.notifications : []} />
+            )}
+          />
+          <Route path='/hr' render={(p) => (
+              <HrDashboard {...p} notifications={viewer ? viewer.notifications : []} />
             )}
           />
           <Route path='/team/:teamId' component={TeamRoot} />

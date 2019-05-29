@@ -30,6 +30,6 @@ export default function tmsSignToken (authToken, tms) {
     tms
   }
   // auth0 signs their tokens with a base64 buffer, so we should too, otherwise the socket will get confused
-  const secret = Buffer.from(clientSecret, 'base64')
+  const secret = clientSecret //Buffer.from(clientSecret, 'base64')
   return sign(newToken, secret)
 }

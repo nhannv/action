@@ -36,7 +36,7 @@ const ViewerNotOnTeamRoot = lazy(() =>
 const PrivateRoutes = () => {
   return (
     <Switch>
-      <Route path='(/me|/newteam|/team)' component={DashboardRoot} />
+      <Route path='(/me|/newteam|/team|/hr)' component={DashboardRoot} />
       <Route
         path='/meeting/:teamId/:localPhaseSlug?/:stageIdxSlug?'
         component={ActionMeetingRoot}

@@ -12,7 +12,7 @@ const SSEConnectionHandler = (sharedDataLoader, rateLimiter, sseClients) => (req
   const {query} = url.parse(req.url, true)
   let authToken
   try {
-    authToken = verify(query.token, Buffer.from(auth0ClientSecret, 'base64'))
+    authToken = verify(query.token, auth0ClientSecret) // Buffer.from(auth0ClientSecret, 'base64'))
   } catch (e) {
     res.sendStatus(404)
     return

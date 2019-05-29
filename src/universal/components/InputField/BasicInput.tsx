@@ -8,7 +8,7 @@ const Input = styled('input')(
   ({disabled}) => ({
     ...ui.fieldBaseStyles,
     ...ui.fieldSizeStyles.medium,
-    ...makeFieldColorPalette('gray', !disabled)
+    ...makeFieldColorPalette('white', !disabled)
   }),
   ({disabled}: {disabled: boolean}) => disabled && {...ui.fieldDisabled}
 )

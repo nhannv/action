@@ -41,6 +41,7 @@ import AtlassianAuth from 'server/graphql/types/AtlassianAuth'
 import GitHubAuth from 'server/graphql/types/GitHubAuth'
 import {GITHUB} from 'universal/utils/constants'
 import allAvailableIntegrations from 'server/graphql/queries/allAvailableIntegrations'
+import Office from 'server/graphql/types/Office'
 
 const User = new GraphQLObjectType({
   name: 'User',
@@ -435,7 +436,20 @@ const User = new GraphQLObjectType({
         if (!authToken.tms.find((teamId) => tms.includes(teamId))) return null
         return userOnTeam
       }
-    }
+    },
+    offices: {
+      type: new GraphQLList(new GraphQLNonNull(Office)),
+      description: 'all the offices the user is on that the viewer can see.',
+      resolve: async ({id: userId}, args, {authToken, dataLoader, orgId}) => {
+        const organizationUsers = await dataLoader.get('organizationUsersByUserId').load(userId)
+        const orgIds = organizationUsers.map(({orgId}) => orgId)
+        const offices = await dataLoader.get('officesByOrgId').load(orgIds)
+        const viewerId = getUserId(authToken)
+        if (viewerId === userId || isSuperUser(authToken)) {
+          return offices
+        }
+      }
+    },
   })
 })
 

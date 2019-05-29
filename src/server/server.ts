@@ -98,7 +98,7 @@ if (!PROD) {
         version: false
       },
       watchOptions: {
-        poll: true,
+        poll: false,
         aggregateTimeout: 300
       }
     })
@@ -134,7 +134,7 @@ const graphQLHandler = httpGraphQLHandler(sharedDataLoader, rateLimiter, sseClie
 app.post(
   '/graphql',
   jwt({
-    secret: Buffer.from(secretKey, 'base64'),
+    secret: secretKey, // Buffer.from(secretKey, 'base64'),
     audience: process.env.AUTH0_CLIENT_ID,
     credentialsRequired: false
   }),
@@ -146,7 +146,7 @@ const intranetGraphQLHandler = intranetHttpGraphQLHandler(sharedDataLoader)
 app.post(
   '/intranet-graphql',
   jwt({
-    secret: Buffer.from(secretKey, 'base64'),
+    secret: secretKey, // Buffer.from(secretKey, 'base64'),
     credentialsRequired: true
   }),
   intranetGraphQLHandler

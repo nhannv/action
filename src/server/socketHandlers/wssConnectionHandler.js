@@ -23,7 +23,7 @@ export default function connectionHandler (sharedDataLoader, rateLimiter) {
     const {query} = url.parse(req.url, true)
     let authToken
     try {
-      authToken = verify(query.token, Buffer.from(auth0ClientSecret, 'base64'))
+      authToken = verify(query.token, auth0ClientSecret) //Buffer.from(auth0ClientSecret, 'base64'))
     } catch (e) {
       // internal error (bad auth)
       socket.close(1011)

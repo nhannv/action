@@ -24,7 +24,8 @@ import {
   ITeamInvitation,
   ITeamMeetingSettings,
   ITeamMember,
-  IUser
+  IUser,
+  IOffice
 } from 'universal/types/graphql'
 import promiseAllPartial from 'universal/utils/promiseAllPartial'
 import MeetingMember from 'server/database/types/MeetingMember'
@@ -87,6 +88,7 @@ interface Tables {
   TeamInvitation: ITeamInvitation
   Team: ITeam
   User: IUser
+  Office: IOffice
 }
 
 export default class RethinkDataLoader {
@@ -143,6 +145,7 @@ export default class RethinkDataLoader {
   teamInvitations = this.pkLoader('TeamInvitation')
   teams = this.pkLoader('Team')
   users = this.pkLoader('User')
+  offices = this.pkLoader('Office')
 
   activeMeetingsByTeamId = this.fkLoader(this.newMeetings, 'teamId', (teamIds) => {
     const r = getRethink()
@@ -358,4 +361,16 @@ export default class RethinkDataLoader {
       cacheKeyFn: (key: JiraRemoteProjectKey) => `${key.atlassianProjectId}:${key.cloudId}`
     }
   )
+
+  officesByOrgId = this.fkLoader(this.offices, 'orgId', (orgIds) => {
+    const r = getRethink()
+    return r
+      .table('Office')
+      .getAll(r.args(orgIds), {index: 'orgId'})
+      .filter((office) =>
+        office('isArchived')
+          .default(false)
+          .ne(true)
+      )
+  })
 }

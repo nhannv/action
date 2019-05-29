@@ -1,0 +1,5 @@
+/// <reference path="../modules/email/components/SummaryEmail/MeetingSummaryEmail/constants.d.ts" />
+/// <reference types="react" />
+declare const MeetingArea: import("create-emotion-styled").StyledOtherComponent<{}, import("react").DetailedHTMLProps<import("react").HTMLAttributes<HTMLDivElement>, HTMLDivElement>, any>;
+export default MeetingArea;
+//# sourceMappingURL=MeetingArea.d.ts.map

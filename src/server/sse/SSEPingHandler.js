@@ -8,7 +8,7 @@ const SSEPingHandler = (sseClients) => (req, res) => {
     const token = req.headers['authorization'].split(' ')[1]
     let authToken
     try {
-      authToken = verify(token, Buffer.from(auth0ClientSecret, 'base64'))
+      authToken = verify(token, auth0ClientSecret) // Buffer.from(auth0ClientSecret, 'base64'))
     } catch (e) {
       return
     }

@@ -73,3 +73,25 @@ export const makeTeamNameSchema = (teamNames) => (value) =>
     .test((val) => teamNames.includes(val) && 'That name is already taken')
 
 export const url = (value) => value.matches(urlRegex)
+
+export const makeOfficeNameSchema = (officeNames) => (value) =>
+  value
+    .trim()
+    .required('Vui lòng nhập tên văn phòng')
+    .min(2, 'Tên văn phòng quá ngắn')
+    .max(50, 'Tên văn phòng quá dài')
+    .test((val) => officeNames.includes(val) && 'Tên văn phòng đã tồn tại')
+    
+export const address = (value) =>
+  value
+    .trim()
+    .required('Bạn nên nhập địa chỉ')
+    .min(2, 'Địa chỉ quá ngắn')
+    .max(125, 'Địa chỉ quá dài')
+
+export const phone = (value) =>
+  value
+    .trim()
+    .required('Bạn nên nhập số điện thoại')
+    .min(2, 'Số điện thoại quá ngắn')
+    .max(125, 'Số điện thoại quá dài')
