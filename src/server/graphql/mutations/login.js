@@ -56,7 +56,8 @@ const login = {
     // VALIDATION
     let authToken
     try {
-      authToken = verify(auth0Token, auth0ClientSecret , { // Buffer.from(auth0ClientSecret, 'base64'), {
+      authToken = verify(auth0Token, auth0ClientSecret, {
+        // Buffer.from(auth0ClientSecret, 'base64'), {
         audience: auth0ClientId
       })
     } catch (e) {

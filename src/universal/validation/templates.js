@@ -81,7 +81,7 @@ export const makeOfficeNameSchema = (officeNames) => (value) =>
     .min(2, 'Tên văn phòng quá ngắn')
     .max(50, 'Tên văn phòng quá dài')
     .test((val) => officeNames.includes(val) && 'Tên văn phòng đã tồn tại')
-    
+
 export const address = (value) =>
   value
     .trim()

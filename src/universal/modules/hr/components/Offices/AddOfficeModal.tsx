@@ -1,7 +1,9 @@
 import React, {Component} from 'react'
 import styled from 'react-emotion'
 import PrimaryButton from 'universal/components/PrimaryButton'
-import withAtmosphere, {WithAtmosphereProps} from 'universal/decorators/withAtmosphere/withAtmosphere'
+import withAtmosphere, {
+  WithAtmosphereProps
+} from 'universal/decorators/withAtmosphere/withAtmosphere'
 // import InviteToTeamMutation from 'universal/mutations/InviteToTeamMutation'
 import withMutationProps, {WithMutationProps} from 'universal/utils/relay/withMutationProps'
 // import AddTeamMemberModalSuccess from './AddTeamMemberModalSuccess'
@@ -58,34 +60,31 @@ class AddOfficeModal extends Component<Props, State> {
     successfulInvitations: null
   }
 
-  componentWillUnmount () {
+  componentWillUnmount() {
     this._mounted = false
   }
 
-  render () {
+  render() {
     const {error, submitting} = this.props
     return (
       <StyledDialogContainer>
         <DialogTitle>Create an office</DialogTitle>
         <DialogContent>
-          <FieldLabel label='Name' fieldSize='small' htmlFor='name'/>
+          <FieldLabel label="Name" fieldSize="small" htmlFor="name" />
           <ControlBlock>
             <FieldBlock>
-              <UnderlineInput autoFocus name='name'/>
+              <UnderlineInput autoFocus name="name" />
             </FieldBlock>
           </ControlBlock>
-          <FieldLabel label='Address' fieldSize='small' htmlFor='address'/>
+          <FieldLabel label="Address" fieldSize="small" htmlFor="address" />
           <ControlBlock>
             <FieldBlock>
-              <UnderlineInput name='address'/>
+              <UnderlineInput name="address" />
             </FieldBlock>
           </ControlBlock>
           {error && <ErrorMessage>{error}</ErrorMessage>}
           <ButtonGroup>
-            <PrimaryButton
-              waiting={submitting}>
-              Create
-            </PrimaryButton>
+            <PrimaryButton waiting={submitting}>Create</PrimaryButton>
           </ButtonGroup>
         </DialogContent>
       </StyledDialogContainer>

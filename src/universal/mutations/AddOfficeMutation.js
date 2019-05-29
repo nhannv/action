@@ -6,15 +6,15 @@ import createProxyRecord from 'universal/utils/relay/createProxyRecord'
 graphql`
   fragment AddOfficeMutation_office on AddOfficePayload {
     office {
-        id
-        name
-        address
-        city
-        phone
-        IP
-        openTime
-        closeTime
-        default
+      id
+      name
+      address
+      city
+      phone
+      IP
+      openTime
+      closeTime
+      default
     }
   }
 `

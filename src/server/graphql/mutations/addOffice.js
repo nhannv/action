@@ -38,10 +38,23 @@ export default {
       }
       // RESOLUTION
       const officeId = shortid.generate()
-      const verifiedOffice = {id: officeId, city, IP, openTime, closeTime, orgId, ...newOffice, createdAt: new Date(), updatedAt: new Date()}
+      const verifiedOffice = {
+        id: officeId,
+        city,
+        IP,
+        openTime,
+        closeTime,
+        orgId,
+        ...newOffice,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      }
       await r({
         // insert office
-        office: r.table('Office').insert(verifiedOffice, {returnChanges: true})('changes')(0)('new_val').default(null)
+        office: r
+          .table('Office')
+          .insert(verifiedOffice, {returnChanges: true})('changes')(0)('new_val')
+          .default(null)
       })
 
       const data = {

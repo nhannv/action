@@ -449,7 +449,7 @@ const User = new GraphQLObjectType({
           return offices
         }
       }
-    },
+    }
   })
 })
 

@@ -34,26 +34,24 @@ const AddOfficeModal = lazyPreload(() =>
 
 const EmptyOffice = (props) => {
   const {history} = props
-  
+
   const {togglePortal: toggleModal, closePortal: closeModal, modalPortal} = useModal()
 
   return (
     <Panel>
       <Body>
-        <Heading>{'Your organization doesn\'s has any offices yet!'}</Heading>
+        <Heading>{"Your organization doesn's has any offices yet!"}</Heading>
         <Copy>
           {'You can create a new office'}
           <br />
           {'by click button.'}
         </Copy>
-        
+
         <StyledButton onClick={toggleModal} size='medium'>
           {'Create a New Office'}
         </StyledButton>
       </Body>
-      {modalPortal(
-        <AddOfficeModal closePortal={closeModal} />
-      )}
+      {modalPortal(<AddOfficeModal closePortal={closeModal} />)}
     </Panel>
   )
 }

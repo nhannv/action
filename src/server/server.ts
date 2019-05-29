@@ -113,7 +113,7 @@ app.use(
   bodyParser.json({
     verify: (req: express.Request, _res: express.Response, buf) => {
       if (req.originalUrl.startsWith('/stripe')) {
-        (req as StripeRequest).rawBody = buf.toString()
+        ;(req as StripeRequest).rawBody = buf.toString()
       }
     }
   })

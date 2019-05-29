@@ -39,23 +39,16 @@ const StyledButton = styled(SecondaryButton)({
 const OfficeRow = (props) => {
   const {
     history,
-    office: {
-      id: officeId,
-      name
-    }
+    office: {id: officeId, name}
   } = props
   const onRowClick = () => history.push(`/me/offices/${officeId}`)
   return (
     <Row>
       <RowInfo>
         <RowInfoHeader>
-          <Name onClick={onRowClick}>
-            {name}            
-          </Name>
+          <Name onClick={onRowClick}>{name}</Name>
         </RowInfoHeader>
-        <RowInfoCopy>
-          {`1 'User')} (1 Active)`}
-        </RowInfoCopy>
+        <RowInfoCopy>{`1 'User')} (1 Active)`}</RowInfoCopy>
       </RowInfo>
       <RowActions>
         <StyledButton onClick={onRowClick}>{'Settings'}</StyledButton>

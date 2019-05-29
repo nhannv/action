@@ -95,12 +95,12 @@ export default class RethinkDataLoader {
   dataLoaderOptions: DataLoader.Options<any, any>
   authToken: null | IAuthToken
 
-  constructor (authToken, dataLoaderOptions = {}) {
+  constructor(authToken, dataLoaderOptions = {}) {
     this.authToken = authToken
     this.dataLoaderOptions = dataLoaderOptions
   }
 
-  private fkLoader<T = any> (
+  private fkLoader<T = any>(
     standardLoader: DataLoader<string, T>,
     field: string,
     fetchFn: (ids: string[]) => any[] | Promise<any[]>
@@ -115,7 +115,7 @@ export default class RethinkDataLoader {
     return new DataLoader<string, T[]>(batchFn, this.dataLoaderOptions)
   }
 
-  private pkLoader<T extends keyof Tables> (table: T) {
+  private pkLoader<T extends keyof Tables>(table: T) {
     // don't pass in a a filter here because they requested a specific ID, they know what they want
     const batchFn = async (keys) => {
       const r = getRethink()

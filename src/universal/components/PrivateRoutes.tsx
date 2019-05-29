@@ -36,18 +36,18 @@ const ViewerNotOnTeamRoot = lazy(() =>
 const PrivateRoutes = () => {
   return (
     <Switch>
-      <Route path='(/me|/newteam|/team|/hr)' component={DashboardRoot} />
+      <Route path="(/me|/newteam|/team|/hr)" component={DashboardRoot} />
       <Route
-        path='/meeting/:teamId/:localPhaseSlug?/:stageIdxSlug?'
+        path="/meeting/:teamId/:localPhaseSlug?/:stageIdxSlug?"
         component={ActionMeetingRoot}
       />
-      <Route path='/retro/:teamId/:localPhaseSlug?/:stageIdxSlug?' component={RetroRoot} />
-      <Route path='/invoice/:invoiceId' component={Invoice} />
-      <Route path='/new-summary/:meetingId/:urlAction?' component={NewMeetingSummary} />
-      <Route path='/admin/graphql' component={Graphql} />
-      <Route path='/admin/impersonate/:newUserId' component={Impersonate} />
-      <Route path='/invitation-required/:teamId' component={ViewerNotOnTeamRoot} />
-      <Route path='/signout' component={Signout} />
+      <Route path="/retro/:teamId/:localPhaseSlug?/:stageIdxSlug?" component={RetroRoot} />
+      <Route path="/invoice/:invoiceId" component={Invoice} />
+      <Route path="/new-summary/:meetingId/:urlAction?" component={NewMeetingSummary} />
+      <Route path="/admin/graphql" component={Graphql} />
+      <Route path="/admin/impersonate/:newUserId" component={Impersonate} />
+      <Route path="/invitation-required/:teamId" component={ViewerNotOnTeamRoot} />
+      <Route path="/signout" component={Signout} />
       <Route component={NotFound} />
     </Switch>
   )
