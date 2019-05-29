@@ -6,6 +6,7 @@
 build/
 coverage/
 dll/
+dist/
 dump.rdb
 node_modules/
 npm-debug.log
